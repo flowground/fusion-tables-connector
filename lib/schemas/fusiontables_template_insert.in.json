@@ -1,0 +1,63 @@
+{
+    "type": "object",
+    "properties": {
+        "tableId": {
+            "required": true,
+            "type": "string"
+        },
+        "fields": {
+            "type": "string"
+        },
+        "key": {
+            "type": "string"
+        },
+        "oauth_token": {
+            "type": "string"
+        },
+        "prettyPrint": {
+            "type": "boolean",
+            "default": true
+        },
+        "quotaUser": {
+            "type": "string"
+        },
+        "userIp": {
+            "type": "string"
+        },
+        "requestBody": {
+            "description": "Represents the contents of InfoWindow templates.",
+            "properties": {
+                "automaticColumnNames": {
+                    "description": "List of columns from which the template is to be automatically constructed. Only one of body or automaticColumns can be specified.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "body": {
+                    "description": "Body of the template. It contains HTML with {column_name} to insert values from a particular column. The body is sanitized to remove certain tags, e.g., script. Only one of body or automaticColumns can be specified.",
+                    "type": "string"
+                },
+                "kind": {
+                    "default": "fusiontables#template",
+                    "description": "The kind of item this is. For a template, this is always fusiontables#template.",
+                    "type": "string"
+                },
+                "name": {
+                    "description": "Optional name assigned to a template.",
+                    "type": "string"
+                },
+                "tableId": {
+                    "description": "Identifier for the table for which the template is defined.",
+                    "type": "string"
+                },
+                "templateId": {
+                    "description": "Identifier for the template, unique within the context of a particular table.",
+                    "format": "int32",
+                    "type": "integer"
+                }
+            },
+            "type": "object"
+        }
+    }
+}

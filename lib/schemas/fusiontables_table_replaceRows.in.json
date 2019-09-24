@@ -1,0 +1,27 @@
+{
+    "type": "object",
+    "properties": {
+        "delimiter": {
+            "type": "string"
+        },
+        "encoding": {
+            "type": "string"
+        },
+        "endLine": {
+            "type": "integer"
+        },
+        "isStrict": {
+            "type": "boolean"
+        },
+        "startLine": {
+            "type": "integer"
+        },
+        "tableId": {
+            "required": true,
+            "type": "string"
+        },
+        "userIp": {
+            "type": "string"
+        }
+    }
+}

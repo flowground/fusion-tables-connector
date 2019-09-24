@@ -1,0 +1,628 @@
+{
+    "type": "object",
+    "properties": {
+        "styleId": {
+            "required": true,
+            "type": "integer"
+        },
+        "tableId": {
+            "required": true,
+            "type": "string"
+        },
+        "key": {
+            "type": "string"
+        },
+        "oauth_token": {
+            "type": "string"
+        },
+        "prettyPrint": {
+            "type": "boolean",
+            "default": true
+        },
+        "quotaUser": {
+            "type": "string"
+        },
+        "userIp": {
+            "type": "string"
+        },
+        "requestBody": {
+            "description": "Represents a complete StyleSettings object. The primary key is a combination of the tableId and a styleId.",
+            "properties": {
+                "kind": {
+                    "default": "fusiontables#styleSetting",
+                    "description": "The kind of item this is. A StyleSetting contains the style definitions for points, lines, and polygons in a table. Since a table can have any one or all of them, a style definition can have point, line and polygon style definitions.",
+                    "type": "string"
+                },
+                "markerOptions": {
+                    "description": "Style definition for points in the table.",
+                    "properties": {
+                        "iconName": {
+                            "description": "Name of the icon. Use values defined in http://www.google.com/fusiontables/DataSource?dsrcid=308519",
+                            "type": "string"
+                        },
+                        "iconStyler": {
+                            "description": "Column or a bucket value from which the icon name is to be determined.",
+                            "properties": {
+                                "buckets": {
+                                    "description": "Bucket function that assigns a style based on the range a column value falls into.",
+                                    "items": {
+                                        "description": "Specifies the minimum and maximum values, the color, opacity, icon and weight of a bucket within a StyleSetting.",
+                                        "properties": {
+                                            "color": {
+                                                "description": "Color of line or the interior of a polygon in #RRGGBB format.",
+                                                "type": "string"
+                                            },
+                                            "icon": {
+                                                "description": "Icon name used for a point.",
+                                                "type": "string"
+                                            },
+                                            "max": {
+                                                "description": "Maximum value in the selected column for a row to be styled according to the bucket color, opacity, icon, or weight.",
+                                                "format": "double",
+                                                "type": "number"
+                                            },
+                                            "min": {
+                                                "description": "Minimum value in the selected column for a row to be styled according to the bucket color, opacity, icon, or weight.",
+                                                "format": "double",
+                                                "type": "number"
+                                            },
+                                            "opacity": {
+                                                "description": "Opacity of the color: 0.0 (transparent) to 1.0 (opaque).",
+                                                "format": "double",
+                                                "type": "number"
+                                            },
+                                            "weight": {
+                                                "description": "Width of a line (in pixels).",
+                                                "format": "int32",
+                                                "type": "integer"
+                                            }
+                                        },
+                                        "type": "object"
+                                    },
+                                    "type": "array"
+                                },
+                                "columnName": {
+                                    "description": "Name of the column whose value is used in the style.",
+                                    "type": "string"
+                                },
+                                "gradient": {
+                                    "description": "Gradient function that interpolates a range of colors based on column value.",
+                                    "properties": {
+                                        "colors": {
+                                            "description": "Array with two or more colors.",
+                                            "items": {
+                                                "properties": {
+                                                    "color": {
+                                                        "description": "Color in #RRGGBB format.",
+                                                        "type": "string"
+                                                    },
+                                                    "opacity": {
+                                                        "description": "Opacity of the color: 0.0 (transparent) to 1.0 (opaque).",
+                                                        "format": "double",
+                                                        "type": "number"
+                                                    }
+                                                },
+                                                "type": "object"
+                                            },
+                                            "type": "array"
+                                        },
+                                        "max": {
+                                            "description": "Higher-end of the interpolation range: rows with this value will be assigned to colors[n-1].",
+                                            "format": "double",
+                                            "type": "number"
+                                        },
+                                        "min": {
+                                            "description": "Lower-end of the interpolation range: rows with this value will be assigned to colors[0].",
+                                            "format": "double",
+                                            "type": "number"
+                                        }
+                                    },
+                                    "type": "object"
+                                },
+                                "kind": {
+                                    "description": "Stylers can be one of three kinds: \"fusiontables#fromColumn if the column value is to be used as is, i.e., the column values can have colors in #RRGGBBAA format or integer line widths or icon names; fusiontables#gradient if the styling of the row is to be based on applying the gradient function on the column value; or fusiontables#buckets if the styling is to based on the bucket into which the the column value falls.",
+                                    "type": "string"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "type": "object"
+                },
+                "name": {
+                    "description": "Optional name for the style setting.",
+                    "type": "string"
+                },
+                "polygonOptions": {
+                    "description": "Style definition for polygons in the table.",
+                    "properties": {
+                        "fillColor": {
+                            "description": "Color of the interior of the polygon in #RRGGBB format.",
+                            "type": "string"
+                        },
+                        "fillColorStyler": {
+                            "description": "Column-value, gradient, or bucket styler that is used to determine the interior color and opacity of the polygon.",
+                            "properties": {
+                                "buckets": {
+                                    "description": "Bucket function that assigns a style based on the range a column value falls into.",
+                                    "items": {
+                                        "description": "Specifies the minimum and maximum values, the color, opacity, icon and weight of a bucket within a StyleSetting.",
+                                        "properties": {
+                                            "color": {
+                                                "description": "Color of line or the interior of a polygon in #RRGGBB format.",
+                                                "type": "string"
+                                            },
+                                            "icon": {
+                                                "description": "Icon name used for a point.",
+                                                "type": "string"
+                                            },
+                                            "max": {
+                                                "description": "Maximum value in the selected column for a row to be styled according to the bucket color, opacity, icon, or weight.",
+                                                "format": "double",
+                                                "type": "number"
+                                            },
+                                            "min": {
+                                                "description": "Minimum value in the selected column for a row to be styled according to the bucket color, opacity, icon, or weight.",
+                                                "format": "double",
+                                                "type": "number"
+                                            },
+                                            "opacity": {
+                                                "description": "Opacity of the color: 0.0 (transparent) to 1.0 (opaque).",
+                                                "format": "double",
+                                                "type": "number"
+                                            },
+                                            "weight": {
+                                                "description": "Width of a line (in pixels).",
+                                                "format": "int32",
+                                                "type": "integer"
+                                            }
+                                        },
+                                        "type": "object"
+                                    },
+                                    "type": "array"
+                                },
+                                "columnName": {
+                                    "description": "Name of the column whose value is used in the style.",
+                                    "type": "string"
+                                },
+                                "gradient": {
+                                    "description": "Gradient function that interpolates a range of colors based on column value.",
+                                    "properties": {
+                                        "colors": {
+                                            "description": "Array with two or more colors.",
+                                            "items": {
+                                                "properties": {
+                                                    "color": {
+                                                        "description": "Color in #RRGGBB format.",
+                                                        "type": "string"
+                                                    },
+                                                    "opacity": {
+                                                        "description": "Opacity of the color: 0.0 (transparent) to 1.0 (opaque).",
+                                                        "format": "double",
+                                                        "type": "number"
+                                                    }
+                                                },
+                                                "type": "object"
+                                            },
+                                            "type": "array"
+                                        },
+                                        "max": {
+                                            "description": "Higher-end of the interpolation range: rows with this value will be assigned to colors[n-1].",
+                                            "format": "double",
+                                            "type": "number"
+                                        },
+                                        "min": {
+                                            "description": "Lower-end of the interpolation range: rows with this value will be assigned to colors[0].",
+                                            "format": "double",
+                                            "type": "number"
+                                        }
+                                    },
+                                    "type": "object"
+                                },
+                                "kind": {
+                                    "description": "Stylers can be one of three kinds: \"fusiontables#fromColumn if the column value is to be used as is, i.e., the column values can have colors in #RRGGBBAA format or integer line widths or icon names; fusiontables#gradient if the styling of the row is to be based on applying the gradient function on the column value; or fusiontables#buckets if the styling is to based on the bucket into which the the column value falls.",
+                                    "type": "string"
+                                }
+                            },
+                            "type": "object"
+                        },
+                        "fillOpacity": {
+                            "description": "Opacity of the interior of the polygon: 0.0 (transparent) to 1.0 (opaque).",
+                            "format": "double",
+                            "type": "number"
+                        },
+                        "strokeColor": {
+                            "description": "Color of the polygon border in #RRGGBB format.",
+                            "type": "string"
+                        },
+                        "strokeColorStyler": {
+                            "description": "Column-value, gradient or buckets styler that is used to determine the border color and opacity.",
+                            "properties": {
+                                "buckets": {
+                                    "description": "Bucket function that assigns a style based on the range a column value falls into.",
+                                    "items": {
+                                        "description": "Specifies the minimum and maximum values, the color, opacity, icon and weight of a bucket within a StyleSetting.",
+                                        "properties": {
+                                            "color": {
+                                                "description": "Color of line or the interior of a polygon in #RRGGBB format.",
+                                                "type": "string"
+                                            },
+                                            "icon": {
+                                                "description": "Icon name used for a point.",
+                                                "type": "string"
+                                            },
+                                            "max": {
+                                                "description": "Maximum value in the selected column for a row to be styled according to the bucket color, opacity, icon, or weight.",
+                                                "format": "double",
+                                                "type": "number"
+                                            },
+                                            "min": {
+                                                "description": "Minimum value in the selected column for a row to be styled according to the bucket color, opacity, icon, or weight.",
+                                                "format": "double",
+                                                "type": "number"
+                                            },
+                                            "opacity": {
+                                                "description": "Opacity of the color: 0.0 (transparent) to 1.0 (opaque).",
+                                                "format": "double",
+                                                "type": "number"
+                                            },
+                                            "weight": {
+                                                "description": "Width of a line (in pixels).",
+                                                "format": "int32",
+                                                "type": "integer"
+                                            }
+                                        },
+                                        "type": "object"
+                                    },
+                                    "type": "array"
+                                },
+                                "columnName": {
+                                    "description": "Name of the column whose value is used in the style.",
+                                    "type": "string"
+                                },
+                                "gradient": {
+                                    "description": "Gradient function that interpolates a range of colors based on column value.",
+                                    "properties": {
+                                        "colors": {
+                                            "description": "Array with two or more colors.",
+                                            "items": {
+                                                "properties": {
+                                                    "color": {
+                                                        "description": "Color in #RRGGBB format.",
+                                                        "type": "string"
+                                                    },
+                                                    "opacity": {
+                                                        "description": "Opacity of the color: 0.0 (transparent) to 1.0 (opaque).",
+                                                        "format": "double",
+                                                        "type": "number"
+                                                    }
+                                                },
+                                                "type": "object"
+                                            },
+                                            "type": "array"
+                                        },
+                                        "max": {
+                                            "description": "Higher-end of the interpolation range: rows with this value will be assigned to colors[n-1].",
+                                            "format": "double",
+                                            "type": "number"
+                                        },
+                                        "min": {
+                                            "description": "Lower-end of the interpolation range: rows with this value will be assigned to colors[0].",
+                                            "format": "double",
+                                            "type": "number"
+                                        }
+                                    },
+                                    "type": "object"
+                                },
+                                "kind": {
+                                    "description": "Stylers can be one of three kinds: \"fusiontables#fromColumn if the column value is to be used as is, i.e., the column values can have colors in #RRGGBBAA format or integer line widths or icon names; fusiontables#gradient if the styling of the row is to be based on applying the gradient function on the column value; or fusiontables#buckets if the styling is to based on the bucket into which the the column value falls.",
+                                    "type": "string"
+                                }
+                            },
+                            "type": "object"
+                        },
+                        "strokeOpacity": {
+                            "description": "Opacity of the polygon border: 0.0 (transparent) to 1.0 (opaque).",
+                            "format": "double",
+                            "type": "number"
+                        },
+                        "strokeWeight": {
+                            "description": "Width of the polyon border in pixels.",
+                            "format": "int32",
+                            "type": "integer"
+                        },
+                        "strokeWeightStyler": {
+                            "description": "Column-value or bucket styler that is used to determine the width of the polygon border.",
+                            "properties": {
+                                "buckets": {
+                                    "description": "Bucket function that assigns a style based on the range a column value falls into.",
+                                    "items": {
+                                        "description": "Specifies the minimum and maximum values, the color, opacity, icon and weight of a bucket within a StyleSetting.",
+                                        "properties": {
+                                            "color": {
+                                                "description": "Color of line or the interior of a polygon in #RRGGBB format.",
+                                                "type": "string"
+                                            },
+                                            "icon": {
+                                                "description": "Icon name used for a point.",
+                                                "type": "string"
+                                            },
+                                            "max": {
+                                                "description": "Maximum value in the selected column for a row to be styled according to the bucket color, opacity, icon, or weight.",
+                                                "format": "double",
+                                                "type": "number"
+                                            },
+                                            "min": {
+                                                "description": "Minimum value in the selected column for a row to be styled according to the bucket color, opacity, icon, or weight.",
+                                                "format": "double",
+                                                "type": "number"
+                                            },
+                                            "opacity": {
+                                                "description": "Opacity of the color: 0.0 (transparent) to 1.0 (opaque).",
+                                                "format": "double",
+                                                "type": "number"
+                                            },
+                                            "weight": {
+                                                "description": "Width of a line (in pixels).",
+                                                "format": "int32",
+                                                "type": "integer"
+                                            }
+                                        },
+                                        "type": "object"
+                                    },
+                                    "type": "array"
+                                },
+                                "columnName": {
+                                    "description": "Name of the column whose value is used in the style.",
+                                    "type": "string"
+                                },
+                                "gradient": {
+                                    "description": "Gradient function that interpolates a range of colors based on column value.",
+                                    "properties": {
+                                        "colors": {
+                                            "description": "Array with two or more colors.",
+                                            "items": {
+                                                "properties": {
+                                                    "color": {
+                                                        "description": "Color in #RRGGBB format.",
+                                                        "type": "string"
+                                                    },
+                                                    "opacity": {
+                                                        "description": "Opacity of the color: 0.0 (transparent) to 1.0 (opaque).",
+                                                        "format": "double",
+                                                        "type": "number"
+                                                    }
+                                                },
+                                                "type": "object"
+                                            },
+                                            "type": "array"
+                                        },
+                                        "max": {
+                                            "description": "Higher-end of the interpolation range: rows with this value will be assigned to colors[n-1].",
+                                            "format": "double",
+                                            "type": "number"
+                                        },
+                                        "min": {
+                                            "description": "Lower-end of the interpolation range: rows with this value will be assigned to colors[0].",
+                                            "format": "double",
+                                            "type": "number"
+                                        }
+                                    },
+                                    "type": "object"
+                                },
+                                "kind": {
+                                    "description": "Stylers can be one of three kinds: \"fusiontables#fromColumn if the column value is to be used as is, i.e., the column values can have colors in #RRGGBBAA format or integer line widths or icon names; fusiontables#gradient if the styling of the row is to be based on applying the gradient function on the column value; or fusiontables#buckets if the styling is to based on the bucket into which the the column value falls.",
+                                    "type": "string"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "type": "object"
+                },
+                "polylineOptions": {
+                    "description": "Style definition for lines in the table.",
+                    "properties": {
+                        "strokeColor": {
+                            "description": "Color of the line in #RRGGBB format.",
+                            "type": "string"
+                        },
+                        "strokeColorStyler": {
+                            "description": "Column-value, gradient or buckets styler that is used to determine the line color and opacity.",
+                            "properties": {
+                                "buckets": {
+                                    "description": "Bucket function that assigns a style based on the range a column value falls into.",
+                                    "items": {
+                                        "description": "Specifies the minimum and maximum values, the color, opacity, icon and weight of a bucket within a StyleSetting.",
+                                        "properties": {
+                                            "color": {
+                                                "description": "Color of line or the interior of a polygon in #RRGGBB format.",
+                                                "type": "string"
+                                            },
+                                            "icon": {
+                                                "description": "Icon name used for a point.",
+                                                "type": "string"
+                                            },
+                                            "max": {
+                                                "description": "Maximum value in the selected column for a row to be styled according to the bucket color, opacity, icon, or weight.",
+                                                "format": "double",
+                                                "type": "number"
+                                            },
+                                            "min": {
+                                                "description": "Minimum value in the selected column for a row to be styled according to the bucket color, opacity, icon, or weight.",
+                                                "format": "double",
+                                                "type": "number"
+                                            },
+                                            "opacity": {
+                                                "description": "Opacity of the color: 0.0 (transparent) to 1.0 (opaque).",
+                                                "format": "double",
+                                                "type": "number"
+                                            },
+                                            "weight": {
+                                                "description": "Width of a line (in pixels).",
+                                                "format": "int32",
+                                                "type": "integer"
+                                            }
+                                        },
+                                        "type": "object"
+                                    },
+                                    "type": "array"
+                                },
+                                "columnName": {
+                                    "description": "Name of the column whose value is used in the style.",
+                                    "type": "string"
+                                },
+                                "gradient": {
+                                    "description": "Gradient function that interpolates a range of colors based on column value.",
+                                    "properties": {
+                                        "colors": {
+                                            "description": "Array with two or more colors.",
+                                            "items": {
+                                                "properties": {
+                                                    "color": {
+                                                        "description": "Color in #RRGGBB format.",
+                                                        "type": "string"
+                                                    },
+                                                    "opacity": {
+                                                        "description": "Opacity of the color: 0.0 (transparent) to 1.0 (opaque).",
+                                                        "format": "double",
+                                                        "type": "number"
+                                                    }
+                                                },
+                                                "type": "object"
+                                            },
+                                            "type": "array"
+                                        },
+                                        "max": {
+                                            "description": "Higher-end of the interpolation range: rows with this value will be assigned to colors[n-1].",
+                                            "format": "double",
+                                            "type": "number"
+                                        },
+                                        "min": {
+                                            "description": "Lower-end of the interpolation range: rows with this value will be assigned to colors[0].",
+                                            "format": "double",
+                                            "type": "number"
+                                        }
+                                    },
+                                    "type": "object"
+                                },
+                                "kind": {
+                                    "description": "Stylers can be one of three kinds: \"fusiontables#fromColumn if the column value is to be used as is, i.e., the column values can have colors in #RRGGBBAA format or integer line widths or icon names; fusiontables#gradient if the styling of the row is to be based on applying the gradient function on the column value; or fusiontables#buckets if the styling is to based on the bucket into which the the column value falls.",
+                                    "type": "string"
+                                }
+                            },
+                            "type": "object"
+                        },
+                        "strokeOpacity": {
+                            "description": "Opacity of the line : 0.0 (transparent) to 1.0 (opaque).",
+                            "format": "double",
+                            "type": "number"
+                        },
+                        "strokeWeight": {
+                            "description": "Width of the line in pixels.",
+                            "format": "int32",
+                            "type": "integer"
+                        },
+                        "strokeWeightStyler": {
+                            "description": "Column-value or bucket styler that is used to determine the width of the line.",
+                            "properties": {
+                                "buckets": {
+                                    "description": "Bucket function that assigns a style based on the range a column value falls into.",
+                                    "items": {
+                                        "description": "Specifies the minimum and maximum values, the color, opacity, icon and weight of a bucket within a StyleSetting.",
+                                        "properties": {
+                                            "color": {
+                                                "description": "Color of line or the interior of a polygon in #RRGGBB format.",
+                                                "type": "string"
+                                            },
+                                            "icon": {
+                                                "description": "Icon name used for a point.",
+                                                "type": "string"
+                                            },
+                                            "max": {
+                                                "description": "Maximum value in the selected column for a row to be styled according to the bucket color, opacity, icon, or weight.",
+                                                "format": "double",
+                                                "type": "number"
+                                            },
+                                            "min": {
+                                                "description": "Minimum value in the selected column for a row to be styled according to the bucket color, opacity, icon, or weight.",
+                                                "format": "double",
+                                                "type": "number"
+                                            },
+                                            "opacity": {
+                                                "description": "Opacity of the color: 0.0 (transparent) to 1.0 (opaque).",
+                                                "format": "double",
+                                                "type": "number"
+                                            },
+                                            "weight": {
+                                                "description": "Width of a line (in pixels).",
+                                                "format": "int32",
+                                                "type": "integer"
+                                            }
+                                        },
+                                        "type": "object"
+                                    },
+                                    "type": "array"
+                                },
+                                "columnName": {
+                                    "description": "Name of the column whose value is used in the style.",
+                                    "type": "string"
+                                },
+                                "gradient": {
+                                    "description": "Gradient function that interpolates a range of colors based on column value.",
+                                    "properties": {
+                                        "colors": {
+                                            "description": "Array with two or more colors.",
+                                            "items": {
+                                                "properties": {
+                                                    "color": {
+                                                        "description": "Color in #RRGGBB format.",
+                                                        "type": "string"
+                                                    },
+                                                    "opacity": {
+                                                        "description": "Opacity of the color: 0.0 (transparent) to 1.0 (opaque).",
+                                                        "format": "double",
+                                                        "type": "number"
+                                                    }
+                                                },
+                                                "type": "object"
+                                            },
+                                            "type": "array"
+                                        },
+                                        "max": {
+                                            "description": "Higher-end of the interpolation range: rows with this value will be assigned to colors[n-1].",
+                                            "format": "double",
+                                            "type": "number"
+                                        },
+                                        "min": {
+                                            "description": "Lower-end of the interpolation range: rows with this value will be assigned to colors[0].",
+                                            "format": "double",
+                                            "type": "number"
+                                        }
+                                    },
+                                    "type": "object"
+                                },
+                                "kind": {
+                                    "description": "Stylers can be one of three kinds: \"fusiontables#fromColumn if the column value is to be used as is, i.e., the column values can have colors in #RRGGBBAA format or integer line widths or icon names; fusiontables#gradient if the styling of the row is to be based on applying the gradient function on the column value; or fusiontables#buckets if the styling is to based on the bucket into which the the column value falls.",
+                                    "type": "string"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "type": "object"
+                },
+                "styleId": {
+                    "description": "Identifier for the style setting (unique only within tables).",
+                    "format": "int32",
+                    "type": "integer"
+                },
+                "tableId": {
+                    "description": "Identifier for the table.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        }
+    }
+}

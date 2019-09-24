@@ -1,0 +1,633 @@
+{
+    "title": "Fusion Tables",
+    "description": "API for working with Fusion Tables data.",
+    "docsUrl": "https://developers.google.com/fusiontables",
+    "url": "https://www.googleapis.com/fusiontables/v2",
+    "envVars": {
+        "OAUTH_CLIENT_ID": {
+            "description": "OAuth Client ID"
+        },
+        "OAUTH_CLIENT_SECRET": {
+            "description": "OAuth Client Secret"
+        }
+    },
+    "credentials": {
+        "fields": {
+            "server": {
+                "label": "Server",
+                "viewClass": "SelectView",
+                "model": [
+                    "https://www.googleapis.com/fusiontables/v2",
+                    "--- Custom URL"
+                ],
+                "required": true
+            },
+            "otherServer": {
+                "label": "Custom Server URL",
+                "viewClass": "TextFieldView"
+            },
+            "oauth2": {
+                "label": "Oauth 2.0 authentication",
+                "viewClass": "OAuthFieldView"
+            }
+        },
+        "oauth2": {
+            "client_id": "{{OAUTH_CLIENT_ID}}",
+            "client_secret": "{{OAUTH_CLIENT_SECRET}}",
+            "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+            "token_uri": "https://www.googleapis.com/oauth2/v4/token",
+            "scopes": [
+                "https://www.googleapis.com/auth/fusiontables",
+                "https://www.googleapis.com/auth/fusiontables.readonly"
+            ]
+        }
+    },
+    "triggers": {
+        "startFlow": {
+            "main": "./lib/triggers/startFlow.js",
+            "type": "polling",
+            "title": "Start Flow",
+            "fields": {}
+        }
+    },
+    "actions": {
+        "fusiontables_query_sqlGet": {
+            "main": "./lib/actions/fusiontables_query_sqlGet.js",
+            "title": "fusiontables.query.sqlGet",
+            "description": "Executes a SQL statement which can be any of \n- SELECT\n- SHOW\n- DESCRIBE",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/fusiontables_query_sqlGet.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "fusiontables_query_sql": {
+            "main": "./lib/actions/fusiontables_query_sql.js",
+            "title": "fusiontables.query.sql",
+            "description": "Executes a Fusion Tables SQL statement, which can be any of \n- SELECT\n- INSERT\n- UPDATE\n- DELETE\n- SHOW\n- DESCRIBE\n- CREATE statement.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/fusiontables_query_sql.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "fusiontables_table_list": {
+            "main": "./lib/actions/fusiontables_table_list.js",
+            "title": "fusiontables.table.list",
+            "description": "Retrieves a list of tables a user owns.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/fusiontables_table_list.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "fusiontables_table_insert": {
+            "main": "./lib/actions/fusiontables_table_insert.js",
+            "title": "fusiontables.table.insert",
+            "description": "Creates a new table.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/fusiontables_table_insert.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "fusiontables_table_importTable": {
+            "main": "./lib/actions/fusiontables_table_importTable.js",
+            "title": "fusiontables.table.importTable",
+            "description": "Imports a new table.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/fusiontables_table_importTable.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "fusiontables_table_delete": {
+            "main": "./lib/actions/fusiontables_table_delete.js",
+            "title": "fusiontables.table.delete",
+            "description": "Deletes a table.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/fusiontables_table_delete.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "fusiontables_table_get": {
+            "main": "./lib/actions/fusiontables_table_get.js",
+            "title": "fusiontables.table.get",
+            "description": "Retrieves a specific table by its ID.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/fusiontables_table_get.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "fusiontables_table_patch": {
+            "main": "./lib/actions/fusiontables_table_patch.js",
+            "title": "fusiontables.table.patch",
+            "description": "Updates an existing table. Unless explicitly requested, only the name, description, and attribution will be updated. This method supports patch semantics.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/fusiontables_table_patch.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "fusiontables_table_update": {
+            "main": "./lib/actions/fusiontables_table_update.js",
+            "title": "fusiontables.table.update",
+            "description": "Updates an existing table. Unless explicitly requested, only the name, description, and attribution will be updated.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/fusiontables_table_update.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "fusiontables_column_list": {
+            "main": "./lib/actions/fusiontables_column_list.js",
+            "title": "fusiontables.column.list",
+            "description": "Retrieves a list of columns.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/fusiontables_column_list.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "fusiontables_column_insert": {
+            "main": "./lib/actions/fusiontables_column_insert.js",
+            "title": "fusiontables.column.insert",
+            "description": "Adds a new column to the table.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/fusiontables_column_insert.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "fusiontables_column_delete": {
+            "main": "./lib/actions/fusiontables_column_delete.js",
+            "title": "fusiontables.column.delete",
+            "description": "Deletes the specified column.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/fusiontables_column_delete.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "fusiontables_column_get": {
+            "main": "./lib/actions/fusiontables_column_get.js",
+            "title": "fusiontables.column.get",
+            "description": "Retrieves a specific column by its ID.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/fusiontables_column_get.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "fusiontables_column_patch": {
+            "main": "./lib/actions/fusiontables_column_patch.js",
+            "title": "fusiontables.column.patch",
+            "description": "Updates the name or type of an existing column. This method supports patch semantics.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/fusiontables_column_patch.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "fusiontables_column_update": {
+            "main": "./lib/actions/fusiontables_column_update.js",
+            "title": "fusiontables.column.update",
+            "description": "Updates the name or type of an existing column.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/fusiontables_column_update.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "fusiontables_table_copy": {
+            "main": "./lib/actions/fusiontables_table_copy.js",
+            "title": "fusiontables.table.copy",
+            "description": "Copies a table.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/fusiontables_table_copy.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "fusiontables_table_importRows": {
+            "main": "./lib/actions/fusiontables_table_importRows.js",
+            "title": "fusiontables.table.importRows",
+            "description": "Imports more rows into a table.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/fusiontables_table_importRows.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "fusiontables_table_refetchSheet": {
+            "main": "./lib/actions/fusiontables_table_refetchSheet.js",
+            "title": "fusiontables.table.refetchSheet",
+            "description": "Replaces rows of the table with the rows of the spreadsheet that is first imported from. Current rows remain visible until all replacement rows are ready.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/fusiontables_table_refetchSheet.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "fusiontables_table_replaceRows": {
+            "main": "./lib/actions/fusiontables_table_replaceRows.js",
+            "title": "fusiontables.table.replaceRows",
+            "description": "Replaces rows of an existing table. Current rows remain visible until all replacement rows are ready.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/fusiontables_table_replaceRows.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "fusiontables_style_list": {
+            "main": "./lib/actions/fusiontables_style_list.js",
+            "title": "fusiontables.style.list",
+            "description": "Retrieves a list of styles.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/fusiontables_style_list.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "fusiontables_style_insert": {
+            "main": "./lib/actions/fusiontables_style_insert.js",
+            "title": "fusiontables.style.insert",
+            "description": "Adds a new style for the table.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/fusiontables_style_insert.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "fusiontables_style_delete": {
+            "main": "./lib/actions/fusiontables_style_delete.js",
+            "title": "fusiontables.style.delete",
+            "description": "Deletes a style.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/fusiontables_style_delete.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "fusiontables_style_get": {
+            "main": "./lib/actions/fusiontables_style_get.js",
+            "title": "fusiontables.style.get",
+            "description": "Gets a specific style.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/fusiontables_style_get.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "fusiontables_style_patch": {
+            "main": "./lib/actions/fusiontables_style_patch.js",
+            "title": "fusiontables.style.patch",
+            "description": "Updates an existing style. This method supports patch semantics.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/fusiontables_style_patch.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "fusiontables_style_update": {
+            "main": "./lib/actions/fusiontables_style_update.js",
+            "title": "fusiontables.style.update",
+            "description": "Updates an existing style.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/fusiontables_style_update.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "fusiontables_task_list": {
+            "main": "./lib/actions/fusiontables_task_list.js",
+            "title": "fusiontables.task.list",
+            "description": "Retrieves a list of tasks.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/fusiontables_task_list.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "fusiontables_task_delete": {
+            "main": "./lib/actions/fusiontables_task_delete.js",
+            "title": "fusiontables.task.delete",
+            "description": "Deletes a specific task by its ID, unless that task has already started running.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/fusiontables_task_delete.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "fusiontables_task_get": {
+            "main": "./lib/actions/fusiontables_task_get.js",
+            "title": "fusiontables.task.get",
+            "description": "Retrieves a specific task by its ID.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/fusiontables_task_get.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "fusiontables_template_list": {
+            "main": "./lib/actions/fusiontables_template_list.js",
+            "title": "fusiontables.template.list",
+            "description": "Retrieves a list of templates.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/fusiontables_template_list.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "fusiontables_template_insert": {
+            "main": "./lib/actions/fusiontables_template_insert.js",
+            "title": "fusiontables.template.insert",
+            "description": "Creates a new template for the table.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/fusiontables_template_insert.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "fusiontables_template_delete": {
+            "main": "./lib/actions/fusiontables_template_delete.js",
+            "title": "fusiontables.template.delete",
+            "description": "Deletes a template",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/fusiontables_template_delete.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "fusiontables_template_get": {
+            "main": "./lib/actions/fusiontables_template_get.js",
+            "title": "fusiontables.template.get",
+            "description": "Retrieves a specific template by its id",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/fusiontables_template_get.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "fusiontables_template_patch": {
+            "main": "./lib/actions/fusiontables_template_patch.js",
+            "title": "fusiontables.template.patch",
+            "description": "Updates an existing template. This method supports patch semantics.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/fusiontables_template_patch.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "fusiontables_template_update": {
+            "main": "./lib/actions/fusiontables_template_update.js",
+            "title": "fusiontables.template.update",
+            "description": "Updates an existing template",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/fusiontables_template_update.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        }
+    }
+}

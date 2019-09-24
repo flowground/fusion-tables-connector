@@ -1,0 +1,29 @@
+{
+    "type": "object",
+    "properties": {
+        "maxResults": {
+            "type": "integer",
+            "minimum": 0
+        },
+        "pageToken": {
+            "type": "string"
+        },
+        "startIndex": {
+            "type": "integer"
+        },
+        "tableId": {
+            "required": true,
+            "type": "string"
+        },
+        "prettyPrint": {
+            "type": "boolean",
+            "default": true
+        },
+        "quotaUser": {
+            "type": "string"
+        },
+        "userIp": {
+            "type": "string"
+        }
+    }
+}
